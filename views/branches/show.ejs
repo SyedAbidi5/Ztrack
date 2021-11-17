@@ -1,0 +1,20 @@
+<h2><%= branch.name %></h2>
+<div>Customer: <%= branch.customer.name %></div>
+<div>Address: <%= branch.address %></div>
+<div>Zip Code: <%= branch.zipCode %></div>
+<div>Point Of Contact: <%= branch.pointOfContact %></div>
+
+<a href="/branches/<%= branch.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/branches/${branch.id}` }) %>
+<% if (accountsOfBranch.length > 0) { %>
+    <h2>Accounts at this Branch</h2>
+    <% accountsOfBranch.forEach(account => { %>
+      <div>
+      <a href="/accounts/<%=account.id%>">
+          <%= account.name %>
+  </a>
+       </div> 
+  <% })%> 
+  <% } %>
+
+  

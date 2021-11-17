@@ -1,0 +1,38 @@
+<h2><%= account.name %></h2>
+<div>Branch: <%= account.branch.name %></div>
+<div>Account Type: <%= account.accountType %></div>
+<div>Panel Manufacturer: <%= account.accountPanelManufacturer %></div>
+<div>Panel Model Number: <%= account.accountPanelModelNumber %></div>
+<div>Account Phone Number: <%= account.accountPanelPhoneNumber %></div>
+<div>Panel Location: <%= account.accountPanelLocation %></div>
+<div>Special Notes: <%= account.accountPanelSpecialNotes %></div>
+<div>Service History: <%= account.accountPanelServiceHistory %></div>
+
+
+<a href="/accounts/<%= account.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/accounts/${account.id}` }) %>
+<% if (devicesOfAccount.length > 0) { %>
+  <h3>Devices at this Account</h3>
+  <table style= "border-spacing: 30px";>
+    <tr>
+      <th>Terminal</th>
+      <th>Zone</th>
+      <th>DeviceType</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  <% devicesOfAccount.forEach(device => { %>
+     
+    <tr>
+      <td><%= device.deviceTerminalNumber %></td>
+      <td><%= device.deviceZone %></td>
+      <td><%= device.deviceType %></td>
+      <td> <a href="/devices/<%= device.id %>/edit">Edit</a></td>
+      <td> <%- include('../partials/deleteForm', { url: `/devices/${device.id}` }) %>
+
+    </tr>    
+            
+<% })%>
+  </table> 
+<% } %>
+

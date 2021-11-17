@@ -1,0 +1,40 @@
+<!--This file is created to re use the form inputs for editing and creating new Devices.-->
+<div>
+    <label>Device Zone</label>
+    <input type="number" name="deviceZone" value="<%= device.deviceZone%>">
+</div>
+
+<div>
+    <label>Device at Terminal Number</label>
+    <input type="number" name="deviceTerminalNumber" value="<%= device.deviceTerminalNumber%>">
+</div>
+
+
+<div>
+    <label>Add device to Account Number</label>
+    <select name="account">
+    <% accounts.forEach(account => { %>
+    
+    <% if(account.id=== device.account) { %>  
+        <option selected label="<%= account.name%>" value = "<%= account.id%>"> 
+    <% } else { %>
+    <option label="<%= account.name%>" value = "<%= account.id%>"> 
+     <% } %>
+ <% }) %>
+</select>
+</div>
+<div>
+    <label>Device Type</label>
+  <select name="deviceType" >
+    <option value="Door Contact">Door Contact</option>
+    <option value="OHD Contact">OHD Contact</option>
+    <option value="Glass Break">Glass Break</option>
+    <option value="Motion Detector">Motion Detector</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+<div>
+    <label>Device Installation Date</label>
+    <input type="text" name="deviceInstallDate" value="<%= device.deviceInstallDate%>">
+</div>

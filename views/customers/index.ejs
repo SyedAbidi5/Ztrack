@@ -1,0 +1,16 @@
+<h2>All Customers</h2>
+<form action="/customers" method="GET"> 
+<label>Name</label>
+<input type="text" name="name" value="<%= searchOptions.name%> ">
+<button type="submit">Search</button>
+</form>
+<br>
+
+<% customers.forEach(customer => { %>
+    <div><%= customer.name %>  
+  <a href="/customers/<%= customer.id %>">View</a> 
+  <a href="/customers/<%= customer.id %>/edit">Edit</a> </div>
+  <!-- We have to use a form since we're using delete and not get to perform the deletion-->
+  <%-include ('../partials/deleteForm',
+             { url: `/customers/${customer.id}`})%>
+  <% })%> 

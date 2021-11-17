@@ -1,0 +1,14 @@
+<h2><%= customer.name %></h2>
+<a href="/customers/<%= customer.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm',
+            { url: `/customers/${customer.id}` }) %>
+<% if (branchesOfCustomer.length > 0) { %>
+  <h2>Customer Branches</h2>
+  <% branchesOfCustomer.forEach(branch => { %>
+    <div>
+    <a href="/branches/<%=branch.id%>">
+        <%= branch.name %>
+</a>
+     </div> 
+<% })%> 
+<% } %>

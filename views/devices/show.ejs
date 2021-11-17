@@ -1,0 +1,11 @@
+
+
+Device Terminal: <%= device.deviceTerminalNumber %>
+Device Type: <%= device.deviceType %>
+Device Zone: <%= device.deviceZone %>
+Installed on Date: <%= device.deviceInstallDate %>
+
+
+
+<a href="/devices/<%= device.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/devices/${device.id}` }) %>

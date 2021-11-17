@@ -1,0 +1,34 @@
+<!--This file is created to re use the form inputs for editing and creating new customers.-->
+<div>
+    <label>Branch Name</label>
+    <input type="text" name="name" value="<%= branch.name%>">
+</div>
+
+<div>
+    <label>Customer</label>
+    <select name="customer">
+    <% customers.forEach(customer => { %>
+    
+    <% if(customer.id=== branch.customer) { %>  
+        <option selected label="<%= customer.name%>" value = "<%= customer.id%>"> 
+    <% } else { %>
+    <option label="<%= customer.name%>" value = "<%= customer.id%>"> 
+     <% } %>
+ <% }) %>
+</select>
+</div>
+
+<div>
+    <label>Address</label>
+    <input type="text" name="address" value="<%= branch.address%>">
+</div>
+
+<div>
+    <label>Zip Code</label>
+    <input type="number" name="zipCode" value="<%= branch.zipCode%>">
+</div>
+
+<div>
+    <label>Point of Contact</label>
+    <input type="text" name="pointOfContact" value="<%= branch.pointOfContact%>">
+</div>

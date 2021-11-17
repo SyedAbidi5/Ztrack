@@ -1,0 +1,63 @@
+<!--This file is created to re use the form inputs for editing and creating new customers.-->
+<div>
+    <label>Account Number</label>
+    <input type="number" name="name" value="<%= account.name%>">
+</div>
+
+<div>
+    <label>Branch Name</label>
+    <select name="branch">
+    <% branches.forEach(branch => { %>
+    
+    <% if(branch.id=== account.branch) { %>  
+        <option selected label="<%= branch.name%>" value = "<%= branch.id%>"> 
+    <% } else { %>
+    <option label="<%= branch.name%>" value = "<%= branch.id%>"> 
+     <% } %>
+ <% }) %>
+</select>
+</div>
+
+<div>
+    <label>Account Type</label>
+  <select name="accountType" >
+    <option value="IDS">IDS</option>
+    <option value="ACS">ACS</option>
+  
+  </select>
+</div>
+<div>
+    <label>Panel Manufacturer</label>
+  <select name="accountPanelManufacturer" >
+    <option value="Bosch">Bosch</option>
+    <option value="Johnson Controls">Johnson Controls</option>
+    <option value="Siemens">Siemens</option>
+    <option value="Denso">Denso</option>
+    <option value="HID">HID</option>
+  </select>
+</div>
+
+
+<div>
+    <label>Panel Model number</label>
+    <input type="text" name="accountPanelModelNumber" value="<%= account.accountPanelModelNumber%>">
+</div>
+
+<div>
+    <label>Panel Phone number</label>
+    <input type="number" name="accountPanelPhoneNumber" value="<%= account.accountPanelPhoneNumber%>">
+</div>
+<div>
+    <label>Panel Location</label>
+    <input type="text" name="accountPanelLocation" value="<%= account.accountPanelLocation%>">
+</div>
+
+<div>
+    <label>Special Notes</label>
+    <input type="text" name="accountPanelSpecialNotes" value="<%= account.accountPanelSpecialNotes%>">
+</div>
+<div>
+    <label>Service History</label>
+    <input type="text" name="accountPanelServiceHistory" value="<%= account.accountPanelServiceHistory%>">
+</div>
+

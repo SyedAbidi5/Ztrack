@@ -1,0 +1,19 @@
+<h2>Search Devices</h2>
+<form action="/devices" method="GET"> 
+<div>
+    <label>Device Zone</label>
+    <input type="text" name="deviceZone" value="<%= searchOptions.deviceZone%> ">
+</div>
+
+
+<button type="submit">Search</button>
+</form>
+<br>
+
+<% devices.forEach(device => { %>
+    <div>
+    <a href="/devices/<%=device.id%>">
+        <%= device.deviceZone %>
+</a>
+</div>  
+<% })%> 

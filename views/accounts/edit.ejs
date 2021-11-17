@@ -1,0 +1,6 @@
+<h2>Edit Account</h2>
+<form action="/accounts/<%= account.id %>?_method=PUT" method="POST">
+  <%- include('_form_fields') %>
+  <a href="/accounts">Cancel</a>
+  <button type="submit">Update</button>
+</form>

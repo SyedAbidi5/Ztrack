@@ -1,0 +1,23 @@
+<h2>Search Branches</h2>
+<form action="/branches" method="GET"> 
+<div>
+    <label>Branch Name</label>
+    <input type="text" name="name" value="<%= searchOptions.name%> ">
+</div>
+<div>
+    <label>Customer</label>
+    <input type="text" name="customers" value="<%= searchOptions.customers%> ">
+</div>
+
+
+<button type="submit">Search</button>
+</form>
+<br>
+
+<% branches.forEach(branch => { %>
+    <div>
+    <a href="/branches/<%=branch.id%>">
+        <%= branch.name %>
+</a>
+</div>  
+<% })%> 

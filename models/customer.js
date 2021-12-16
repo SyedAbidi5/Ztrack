@@ -6,13 +6,27 @@ const customerSchema = new mongoose.Schema ({
 
 name:{
     type: String,
-    required: true
-}
-/*address:{
+    required: true,
+    unique:true
+},
+address:{
     type: String,
-    required: false
-}*/
-
+    required: true
+},
+zipCode:{
+  type: String,
+  required: true
+},
+state:{
+  type: String,
+  required: true
+},
+phoneNumber:{
+  type: String
+},
+customerAccountManager:{
+  type:String
+}
 })
 
 customerSchema.pre('remove', function(next) {
@@ -27,4 +41,4 @@ customerSchema.pre('remove', function(next) {
     })
   })
 
-module.exports = mongoose.model('Customer',customerSchema)
+module.exports = mongoose.model('Customer',customerSchema);

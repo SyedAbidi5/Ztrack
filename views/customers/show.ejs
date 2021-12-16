@@ -1,14 +1,31 @@
-<h2><%= customer.name %></h2>
-<a href="/customers/<%= customer.id %>/edit">Edit</a>
+ <div class="inner-container">
+ <div class="page-show-title"> CUSTOMER DETAILS</div>
+    <div class="page-show-heading"> Customer:<%=customer.name %></div>    
+    <div class ="page-show"> Address:<a class="page-show-info"> <%= customer.address %></a> </div>
+    <div class ="page-show">State:<a class="page-show-info"><%= customer.state %></a></div>
+    <div class ="page-show">Zip Code:<a class="page-show-info"> <%= customer.zipCode %></a></div>
+    <div class="page-show">Contact:<a class="page-show-info"> <%= customer.phoneNumber %></a></div>
+    <div class="page-show">Customer Account Manager: <a class="page-show-info"><%= customer.customerAccountManager %></a></div>
+
+
+<div class="btn-row">
+<a class="btn btn-primary" href="/customers/<%= customer.id %>/edit">Edit</a>
 <%- include('../partials/deleteForm',
             { url: `/customers/${customer.id}` }) %>
+  </div>
+
+
 <% if (branchesOfCustomer.length > 0) { %>
-  <h2>Customer Branches</h2>
+  <h2 class="page-header"><%=customer.name%> Branches</h2>
+  
   <% branchesOfCustomer.forEach(branch => { %>
     <div>
-    <a href="/branches/<%=branch.id%>">
+    <a class="btn btn-primary" href="/branches/<%=branch.id%>">
         <%= branch.name %>
 </a>
-     </div> 
+</div>
+<br>
+<br>
 <% })%> 
 <% } %>
+</div>

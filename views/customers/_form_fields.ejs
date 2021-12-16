@@ -1,2 +1,39 @@
-<label>Name</label>
-<input type="text" name="name" value="<%= customer.name %>">
+<div class="form-row">
+    <div class="form-item">
+        <label class="page-sub-header" >Customer Name*</label>
+        <input type="text" name="name" value="<%= customer.name %>">        
+    </div>
+    <div class="form-item">
+    <label class="page-sub-header">Address*</label>
+    <input type="text" name="address" value="<%= customer.address%>">
+    </div>
+</div>
+
+<div class="form-row">
+
+    <div class="form-item">
+        <label class="page-sub-header">Zip Code*</label>
+        <input type="text" name="zipCode" value="<%= customer.zipCode%>">
+    </div>
+    <div class="form-item">
+        <label class="page-sub-header">State*</label>
+        <input type="text" name="state" value="<%= customer.state%>">
+</div>
+</div>
+
+<div class="form-row">
+
+    <div class="form-item">
+        <label class="page-sub-header">Phone</label>
+        <input type="text" name="phoneNumber" value="<%= customer.phoneNumber%>">
+    </div>
+    <div class="form-item">
+        <label>Customer Account Manager</label>
+        <select name="customerAccountManager" >
+            <option value="Jamie S">Jamie S</option>
+            <option value="Kyle C">Kyle C</option>
+            <option value="Brian A">Brian A</option>
+            <option value="Rich G">Rich G</option>
+        </select>
+    </div>
+</div>

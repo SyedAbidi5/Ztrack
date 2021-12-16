@@ -52,32 +52,21 @@ router.post('/', async (req, res) => {
     }
 })
 
-//Branch accounts
+//Show Branch route
 router.get('/:id',async (req,res)=>{
     try {
         const branch = await Branch.findById(req.params.id)
-        const accounts = await Account.find({ branch: branch.id }).limit(6).exec()
+        const customer = await Customer.findById(branch.customer)
+        const accounts = await Account.find({ branch: branch.id }).limit(10).exec()
         res.render('branches/show', {
           branch: branch,
+          customer:customer,
           accountsOfBranch: accounts
         })
       } catch {
         res.redirect('/')
       }
 })
-
-
-// Show Book Route
-router.get('/:id', async (req, res) => {
-    try {
-      const branch = await Branch.findById(req.params.id)
-                             .populate('customer')
-                             .exec()
-      res.render('branches/show', { branch: branch })
-    } catch {
-      res.redirect('/')
-    }
-  })
 
   // Edit Branch Route
 router.get('/:id/edit', async (req, res) => {
@@ -120,14 +109,12 @@ router.delete('/:id', async (req, res) => {
       branch = await Branch.findById(req.params.id)
       await branch.remove()
       res.redirect('/branches')
-    } catch {
-      if (branch != null) {
-        res.render('branches/show', {
-          branch: branch,
-          errorMessage: 'Could not remove branch'
-        })
-      } else {
+    } catch(e) {
+      if (branch == null) {
         res.redirect('/')
+      } else {
+        console.log(e)
+        res.redirect(`/branches/${branch.id}`)
       }
     }
   })

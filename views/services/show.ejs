@@ -1,0 +1,13 @@
+
+<div class="page-show-title"> SERVICE HISTORY DETAILS</div>
+<div class="page-show-heading">Service Ticket Number:<%= service.name %></div>
+<div class="page-show">Serviced on Account: <a class="page-show-info"><%= service.account.name %></a></div>
+<div class="page-show">Serviced on Date:<a class="page-show-info"> <%= service.serviceDate %></a></div>
+<div class="page-show">Serviced By:<a class="page-show-info"><%= service.servicedBy %></a></div>
+<div class="page-show">Service Title: <a class="page-show-info"><%= service.serviceTitle %></a></div>
+<div class="page-show">Service Description:<a class="page-show-info"><%= service.serviceText %></a></div>
+
+<div class="btn-row">
+<a class="btn btn-primary" href="/services/<%= service.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/services/${service.id}` }) %>
+</div>

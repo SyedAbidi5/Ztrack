@@ -6,7 +6,8 @@ const accountSchema = new mongoose.Schema ({
 
 name:{
     type: String,
-    required: true
+    required: true,
+    unique:true
 },
 accountType:{
     type: String,
@@ -31,11 +32,6 @@ accountPanelLocation:{
 accountPanelSpecialNotes:{
     type: String
 },
-accountPanelServiceHistory:{
-    type: String,
-    required: true    
-},
-
 branch:{
     // Referencing the branch object ID
     type: mongoose.Schema.Types.ObjectId,

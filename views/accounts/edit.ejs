@@ -1,6 +1,8 @@
 <h2 class="page-header">Edit Account</h2>
 <form action="/accounts/<%= account.id %>?_method=PUT" method="POST">
   <%- include('_form_fields') %>
-  <a href="/accounts">Cancel</a>
-  <button type="submit">Update</button>
+  <div class="form-row form-row-end btn-row">
+  <a class="btn btn-danger" href="/accounts/<%=account.id  %> ">Cancel</a>
+  <button class="btn btn-primary"   type="submit">Update</button>
 </form>
+</div>

@@ -1,34 +1,41 @@
 <!--This file is created to re use the form inputs for editing and creating new customers.-->
-<div>
-    <label>Branch Name</label>
-    <input type="text" name="name" value="<%= branch.name%>">
-</div>
+<div class="form-row">
+    <div class="form-item">
+        <label class="page-sub-header">Branch Name*</label>
+        <input type="text" name="name" value="<%= branch.name%>">
+    </div>
 
-<div>
-    <label>Customer</label>
-    <select name="customer">
-    <% customers.forEach(customer => { %>
-    
-    <% if(customer.id=== branch.customer) { %>  
+    <div class="form-item">
+        <label class="page-sub-header" >Customer*</label>
+        <select name="customer">
+        <% customers.forEach(customer => { %>
+         <% if(`${customer.id}` === `${branch.customer}`) { %>  
         <option selected label="<%= customer.name%>" value = "<%= customer.id%>"> 
-    <% } else { %>
-    <option label="<%= customer.name%>" value = "<%= customer.id%>"> 
-     <% } %>
- <% }) %>
-</select>
+        <% } else { %>
+        <option label="<%= customer.name%>" value = "<%= customer.id%>"> 
+        <% } %>
+    <% }) %>
+    </select>
+    </div>
 </div>
 
-<div>
-    <label>Address</label>
-    <input type="text" name="address" value="<%= branch.address%>">
+<div class="form-row">
+    
+    <div class="form-item">
+        <label class="page-sub-header">Address*</label>
+        <input type="text" name="address" value="<%= branch.address%>">
+    </div>
+    
+    <div class="form-item">
+        <label class="page-sub-header">Zip Code*</label>
+        <input type="number" name="zipCode" value="<%= branch.zipCode%>">
+    </div>
 </div>
 
-<div>
-    <label>Zip Code</label>
-    <input type="number" name="zipCode" value="<%= branch.zipCode%>">
-</div>
-
-<div>
-    <label>Point of Contact</label>
-    <input type="text" name="pointOfContact" value="<%= branch.pointOfContact%>">
+<div class="form-row">
+    
+    <div class="form-item">
+        <label class="page-sub-header">Point of Contact*</label>
+        <input type="text" name="pointOfContact" value="<%= branch.pointOfContact%>">
+    </div>
 </div>

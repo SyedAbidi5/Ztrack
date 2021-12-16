@@ -3,6 +3,7 @@ const router = express.Router()
 const Branch = require('../models/branch')
 const Device = require('../models/device')
 const Account = require('../models/account')
+const Service= require('../models/service')
 //All Accounts Route
 router.get('/', async (req, res) => {
     //let query = Account.find()
@@ -15,15 +16,6 @@ router.get('/', async (req, res) => {
              }
          }
      }
-
-
-  /*   if (req.query.name != null && req.query.name != ''){
-        query= query.regex('name',new RegExp(req.query.name,'m'))
-        }
-   if (req.query.branch != null && req.query.branch != ''){
-            query= query.regex('branch',new RegExp(req.query.customer,'i'))
-            } */   
-
 try{
     const accounts = await Account.find(query);
 res.render('accounts/index',{
@@ -69,14 +61,18 @@ router.post('/', async (req, res) => {
     }
 })
 
-//Account devices
+//Show Account details 
 router.get('/:id',async (req,res)=>{
   try {
       const account = await Account.findById(req.params.id)
-      const devices = await Device.find({ account: account.id }).limit(6).exec()
+      const branch = await Branch.findById(account.branch)
+      const devices = await Device.find({ account: account.id }).limit(25).exec()
+      const serviceHistory = await Service.find({ account: account.id }).limit(25).exec()
       res.render('accounts/show', {
         account: account,
-        devicesOfAccount: devices
+        branch: branch,
+        devicesOfAccount: devices,
+        serviceOfAccount: serviceHistory
       })
     } catch(err) 
     {
@@ -84,21 +80,6 @@ router.get('/:id',async (req,res)=>{
       res.redirect('/')
     }
 })
-
-
-
-// Show Account Route
-router.get('/:id', async (req, res) => {
-    try {
-      const account = await Account.findById(req.params.id)
-                             .populate('branch')
-                             .exec()
-      res.render('accounts/show', { account: account })
-    } catch {
-      res.redirect('/')
-    }
-  })
-
   // Edit Account Route
 router.get('/:id/edit', async (req, res) => {
     try {
@@ -143,6 +124,7 @@ router.put('/:id', async (req, res) => {
   // Delete Account Page
 router.delete('/:id', async (req, res) => {
     let account
+
     try {
       account = await Account.findById(req.params.id)
       await account.remove()

@@ -1,38 +1,59 @@
-<h2><%= account.name %></h2>
-<div>Branch: <%= account.branch.name %></div>
-<div>Account Type: <%= account.accountType %></div>
-<div>Panel Manufacturer: <%= account.accountPanelManufacturer %></div>
-<div>Panel Model Number: <%= account.accountPanelModelNumber %></div>
-<div>Account Phone Number: <%= account.accountPanelPhoneNumber %></div>
-<div>Panel Location: <%= account.accountPanelLocation %></div>
-<div>Special Notes: <%= account.accountPanelSpecialNotes %></div>
-<div>Service History: <%= account.accountPanelServiceHistory %></div>
-
-
-<a href="/accounts/<%= account.id %>/edit">Edit</a>
+<br>
+<div class="page-show-title"> ACCOUNT DETAILS</div>
+<div class="page-show-heading"> Account Number:<%= account.name %></div>
+<div class="page-show">Customer Branch: <a class="page-show-info"><%= branch.name %></a></div>
+<div class="page-show">Account Type: <a class="page-show-info"><%= account.accountType %></a></div>
+<div class="page-show">Panel Manufacturer: <a class="page-show-info"><%= account.accountPanelManufacturer %></a></div>
+<div class="page-show">Panel Model Number: <a class="page-show-info"><%= account.accountPanelModelNumber %></a></div>
+<div class="page-show">Account Phone Number:<a class="page-show-info"><%= account.accountPanelPhoneNumber %></a></div>
+<div class="page-show">Panel Location: <a class="page-show-info"><%= account.accountPanelLocation %></a></div>
+<div class="page-show">Special Notes: <a class="page-show-info"><%= account.accountPanelSpecialNotes %></a></div>
+<br>
+<div class="btn-row">
+<a class="btn btn-primary" href="/accounts/<%= account.id %>/edit">Edit</a>
 <%- include('../partials/deleteForm', { url: `/accounts/${account.id}` }) %>
+</div>
+<br>
+<br>
+<div class="page-show-heading">Device List</div>
 <% if (devicesOfAccount.length > 0) { %>
-  <h3>Devices at this Account</h3>
-  <table style= "border-spacing: 30px";>
+    <table style= "border-spacing: 60px";>
     <tr>
-      <th>Terminal</th>
-      <th>Zone</th>
-      <th>DeviceType</th>
-      <th>Edit</th>
-      <th>Delete</th>
+      <th class="page-show">Terminal</th>
+      <th class="page-show">Zone</th>
+      <th class="page-show">DeviceType</th>
+      <th class="page-show">Edit</th>
+      <th class="page-show">Delete</th>
     </tr>
   <% devicesOfAccount.forEach(device => { %>
      
     <tr>
-      <td><%= device.deviceTerminalNumber %></td>
-      <td><%= device.deviceZone %></td>
-      <td><%= device.deviceType %></td>
-      <td> <a href="/devices/<%= device.id %>/edit">Edit</a></td>
+      <td class="page-show-info"><%= device.deviceTerminalNumber %></td>
+      <td class="page-show-info"><%= device.deviceZone %></td>
+      <td class="page-show-info"><%= device.deviceType %></td>
+      <td> <a class="btn btn-primary" href="/devices/<%= device.id %>/edit">Edit</a></td>
       <td> <%- include('../partials/deleteForm', { url: `/devices/${device.id}` }) %>
 
     </tr>    
             
 <% })%>
   </table> 
-<% } %>
+  <% }else{%> 
+    <div class="page-show">No Device List found for this Account!</div>
+    <% }%> 
+<!--</div>-->
+  <div class="page-show-heading"> Service History </div>  
+  <% if (serviceOfAccount.length > 0) { %>
+  <br>
+  <% serviceOfAccount.forEach(service => { %>
+    <div class="btn-row">
+    <a class="btn btn-primary" href="/services/<%=service.id%>">
+        <%= service.name %></a>
+  <br>
+  <% })%> 
+
+  <% }else{%> 
+    <div class="page-show">No Service History found for this Account!</div>
+    <% }%> 
+</div>
 

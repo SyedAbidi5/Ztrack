@@ -1,0 +1,42 @@
+<!--This file is created to re use the form inputs for editing and creating new Devices.-->
+<div class="form-row">
+    <div class="form-item">
+         <label class="page-sub-header">Service for Account Number*</label>
+         <select name="account">
+             <% accounts.forEach(account => { %>
+             <% if(account.id=== service.account) { %>  
+             <option selected label="<%= account.name%>" value = "<%= account.id%>"> 
+             <% } else { %>
+             <option label="<%= account.name%>" value = "<%= account.id%>"> 
+             <% } %>
+             <% }) %>
+        </select>
+    </div>
+    <div class="form-item">
+        <label class="page-sub-header">Service Ticket Number*</label>
+        <input type="number" name="name" value="<%= service.name%>">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-item">
+        <label class="page-sub-header">Service Date*</label>
+        <input type="text" name="serviceDate" value="<%= service.serviceDate%>">
+    </div>
+
+    <div class="form-item">
+        <label class="page-sub-header">Serviced By*</label>
+        <input type="text" name="servicedBy" value="<%= service.servicedBy%>">
+    </div>
+
+</div>    
+<div class ="form-row">
+    <div class = "form-item">
+        <label class="page-sub-header">Service Title*</label>
+        <input type="text" name="serviceTitle" value="<%= service.serviceTitle%>">
+    </div>
+
+    <div class="form-item">
+        <label class="page-sub-header">Service Description*</label>
+        <textarea name="serviceText"><%= service.serviceText%></textarea>
+    </div>
+</div>

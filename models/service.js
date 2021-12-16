@@ -4,9 +4,10 @@ const mongoose = require('mongoose')
 // Create Schema called Device.Equivalent of a Table in SQL databases with column names. 
 const serviceSchema = new mongoose.Schema ({
 
-serviceTicketNumber:{
-    type: Number,
-    required: true
+name:{
+    type: String,
+    required: true,
+    unique:true
 },
 serviceTitle:{
     type: String,
@@ -20,7 +21,7 @@ serviceDate:{
     type: String,
     required: true
 },
-serviceBy:{
+servicedBy:{
     type: String,
     required: true
 },

@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+<div class="container mt-5">
+  <h1 class="header-title">Z Track</h1>
+  <h1 style="color:black" >Register</h1>
+          <!-- Makes POST request to /register route -->
+          <form action="/register" method="POST">
+            <div class="form-item">
+              <label class="page-sub-header" for="email">Email</label>
+              <input type="email" name="username">
+              <label class="page-sub-header" for="password">Password</label>
+              <input type="password" name="password">
+            </div>
+            <br>
+           <div> <button type="submit" class="btn btn-dark">Register</button></div>
+          </form>
+
+</div>
+

@@ -1,22 +1,21 @@
+<%- include ('../dashboard/index.ejs')%>
 <h2 class="page-header">Search Service History</h2>
-<div>
-    <a href="/services/new"><button>Add New Service History</button></a></div>
-    <div><br>
-<form action="/services" method="GET"> 
-<div>
-    <label>Service Ticket Number</label>
-    <input type="text" name="serviceTicketNumber%" value="<%= searchOptions.serviceTicketNumber%> ">
+    <div class="form-item-index">
+    <form action="/services" method="GET"> 
+        <div>
+        <label class="page-sub-header">Enter Ticket Number</label>
+        </div>
+        <input type="text" name="name" value="<%= searchOptions.name%>">
+        <button class="btn btn-primary" type="submit">Search</button>
+        <a class="btn btn-primary-add" href="/services/new">Add New Service History</a>
+    </form>
+    <br>
 </div>
-
-
-<button type="submit">Search</button>
-</form>
 <br>
-
 <% services.forEach(service => { %>
-    <div>
-    <a href="/services/<%=service.id%>">
-        <%= service.serviceTicketNumber %>
-</a>
+    <div class="btn-row">
+    <a class="btn btn-primary" href="/services/<%=service.id%>">
+        <%= service.name %></a>
 </div>  
+<br>
 <% })%> 

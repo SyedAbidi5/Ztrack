@@ -1,16 +1,19 @@
-<h2>All Customers</h2>
-<form action="/customers" method="GET"> 
-<label>Name</label>
-<input type="text" name="name" value="<%= searchOptions.name%> ">
-<button type="submit">Search</button>
-</form>
+<%- include ('../dashboard/index.ejs')%>
+<h2 class="page-header">Search Customers</h2>
+  <div class="form-item-index">
+    <form action="/customers" method="GET"> 
+      <div>
+        <label class="page-sub-header">Enter Customer Name</label>
+      </div>
+      <input type="text" name="name" value="<%= searchOptions.name%> ">
+      <button  class="btn btn-primary" type="submit">Search</button>
+      <a class="btn btn-primary-add" href="/customers/new">Add New Customer</a> 
+    </form>
+  </div>
 <br>
-
 <% customers.forEach(customer => { %>
-    <div><%= customer.name %>  
-  <a href="/customers/<%= customer.id %>">View</a> 
-  <a href="/customers/<%= customer.id %>/edit">Edit</a> </div>
-  <!-- We have to use a form since we're using delete and not get to perform the deletion-->
-  <%-include ('../partials/deleteForm',
-             { url: `/customers/${customer.id}`})%>
+  <div class="btn-row"> 
+ <a class="btn btn-primary" href="/customers/<%= customer.id %>"><%= customer.name %></a> 
+  </div>
+  <br>
   <% })%> 

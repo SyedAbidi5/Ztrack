@@ -56,7 +56,7 @@ router.post('/', async (req, res) => {
 
    try{
     const newDevice = await device.save()
-             res.redirect(`accounts/${newDevice.id}`)
+             res.redirect(`accounts/${newDevice.account}`)
               
     }
     
@@ -78,13 +78,13 @@ router.get('/:id', async (req, res) => {
     }
   })
 
-  // Edit Account Route
+  // Edit Device Route
 router.get('/:id/edit', async (req, res) => {
-    try {
+  try {
       const device = await Device.findById(req.params.id)
       renderEditPage(res, device)
     } catch {
-      res.redirect('/')
+      res.render('/')
     }
   })
   
@@ -117,13 +117,13 @@ router.put('/:id', async (req, res) => {
     }
   })
 
-  // Delete Account Page
+  // Delete Device Page
 router.delete('/:id', async (req, res) => {
     let device
     try {
       device = await Device.findById(req.params.id)
       await device.remove()
-      res.redirect('/devices')
+      res.redirect(`/accounts/${device.account}`)
     } catch {
       if (device != null) {
         res.render('devices/show', {

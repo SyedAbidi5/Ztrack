@@ -1,6 +1,9 @@
-<h3>New Branches</h3>
+<h3 class="page-header">New Branches</h3>
 <form action="/branches" method="POST">
-<%- include('_form_fields')%>
-    <a href="/branches">Cancel </a>
-    <button type="submit"> Create</button>
+    <%- include('_form_fields')%>
+    <div class="form-row form-row-end btn-row">
+    <a class="btn btn-danger" href="/branches">Cancel </a>
+    <button class="btn btn-primary" type="submit"> Create</button>
+    </div>
 </form>
+    

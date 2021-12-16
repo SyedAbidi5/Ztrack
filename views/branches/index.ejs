@@ -1,23 +1,17 @@
-<h2>Search Branches</h2>
-<form action="/branches" method="GET"> 
-<div>
-    <label>Branch Name</label>
-    <input type="text" name="name" value="<%= searchOptions.name%> ">
-</div>
-<div>
-    <label>Customer</label>
-    <input type="text" name="customers" value="<%= searchOptions.customers%> ">
-</div>
-
-
-<button type="submit">Search</button>
-</form>
-<br>
-
+<%- include ('../dashboard/index.ejs')%>
+<h2 class="page-header">Search Branches</h2>
+  <div class="form-item-index">
+   <form action="/branches" method="GET"> 
+    <div><label class="page-sub-header">Enter Branch Name</label></div>
+    <input class="" type="text" name="name" value="<%= searchOptions.name%> ">
+    <button class="btn btn-primary" type="submit">Search</button>
+    <a class="btn btn-primary-add-branch" href="/branches/new">Add New Branch</a>
+   </form>
+   <br>
+ </div>
+ <br>
 <% branches.forEach(branch => { %>
-    <div>
-    <a href="/branches/<%=branch.id%>">
-        <%= branch.name %>
-</a>
-</div>  
-<% })%> 
+    <div class="customer-row">
+         <a class="btn btn-primary" href="/branches/<%= branch.id %>"><%= branch.name %></a> 
+    </div>
+  <% })%> 

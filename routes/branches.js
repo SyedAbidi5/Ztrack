@@ -111,7 +111,7 @@ router.delete('/:id', async (req, res) => {
       res.redirect('/branches')
     } catch(e) {
       if (branch == null) {
-        res.redirect('/')
+        res.redirect('/dashboard')
       } else {
         console.log(e)
         res.redirect(`/branches/${branch.id}`)

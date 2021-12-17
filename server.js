@@ -10,7 +10,6 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 const methodOverride = require('method-override')
-
 const homeRouter = require('./routes/home') // Point to Routes
 const customerRouter = require('./routes/customers') // Point to Customer Routes
 const branchRouter = require('./routes/branches') // Point to Branch Routes
@@ -25,7 +24,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ limit: '10mb', extended: false}))
 app.use(methodOverride('_method'))
 app.use(session({
-    secret: "Our little secret.",
+    secret: process.env.Session_secret ,
     resave: false,
     saveUninitialized: false
   }));

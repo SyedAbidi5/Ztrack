@@ -123,20 +123,26 @@ router.put('/:id', async (req, res) => {
 
   // Delete Account Page
 router.delete('/:id', async (req, res) => {
-    let account
-
+  let account
+  account = await Account.findById(req.params.id)
+  const branch = await Branch.findById(account.branch)
+  const devices = await Device.find({ account: account.id }).limit(25).exec()
+  const serviceHistory = await Service.find({ account: account.id }).limit(25).exec()
     try {
-      account = await Account.findById(req.params.id)
       await account.remove()
       res.redirect('/accounts')
-    } catch {
+    } catch(e) {
       if (account != null) {
+        console.log(e)
         res.render('accounts/show', {
           account: account,
-          errorMessage: 'Could not remove Account'
+          branch: branch,
+          devicesOfAccount: devices,
+          serviceOfAccount: serviceHistory,
+          errorMessage: 'Could not remove Account!! Please delete all devices and service History associated with this account before attempting to delete.'
         })
       } else {
-        res.redirect('/')
+        res.redirect('/accounts')
       }
     }
   })
